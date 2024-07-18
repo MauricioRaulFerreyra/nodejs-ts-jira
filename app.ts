@@ -1,4 +1,5 @@
 import dotenv from 'dotenv';
+import cors from 'cors';
 import Server from './models/server';
 
 // Configurar dot.env
