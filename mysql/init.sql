@@ -1,7 +1,7 @@
-CREATE DATABASE IF NOT EXISTS `tsdb`;
-USE `tsdb`;
-CREATE TABLE IF NOT EXISTS `tsdb`.`users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE DATABASE IF NOT EXISTS `fernandoherrera`;
+USE `fernandoherrera`;
+CREATE TABLE IF NOT EXISTS `fernandoherrera`.`users` (
+  `id` integer NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `state` boolean default false NOT NULL,

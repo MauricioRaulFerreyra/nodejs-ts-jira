@@ -4,7 +4,10 @@ import dotenv from 'dotenv';
 import morgan from 'morgan';
 
 import userRoutes from '../routes/user';
-import db from '../db_sequelize/connection';
+// Sequelize
+import db_sequelize from '../db_sequelize/connection.sequelize';
+// TypeORM
+import { AppDataSource } from '../db_typeorm/connection.typeorm';
 
 dotenv.config();
 
@@ -30,12 +33,22 @@ class Server {
     }    
 
     async dbConnect() {
-        try {
-          await db.authenticate();
-          console.log("Connection has been established successfully.");
-        } catch (error) {
-          console.error("Unable to connect to the database:", error);
+        if(process.env.ORM === 'sequelize'){
+            try {
+              await db_sequelize.authenticate();
+              console.log("Connection has been established successfully to Sequelize.");
+            } catch (error) {
+              console.error("Unable to connect to the database:", error);
+            }
+        } else {
+            try {
+              await AppDataSource.initialize();
+              console.log("Connection has been established successfully to TypeORM . . .");
+            } catch (error) {
+              console.error("Unable to connect to the database:", error);
+            }
         }
+        
     }
 
     middlewares() {

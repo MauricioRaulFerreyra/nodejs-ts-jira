@@ -1,5 +1,5 @@
 import dotenv from 'dotenv';
-import cors from 'cors';
+import 'reflect-metadata';
 import Server from './models/server';
 
 // Configurar dot.env
